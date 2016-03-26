@@ -17,6 +17,8 @@ app.get("/", function(req, res) {
 });
 
 io.on('connection', function(socket) {
-    // console.log(socket);
     console.log("a socket has connected");
+    socket.on('message', function(person, message) {
+        socket.broadcast.emit('message', person, message);
+    });
 });
