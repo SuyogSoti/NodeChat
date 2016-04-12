@@ -12,13 +12,14 @@ app.use(express.static(__dirname + "/public"));
 
 
 app.get("/", function(req, res) {
-    res.writeHead(200);
-    res.end(fs.readFileSync('index.html'));
+	res.writeHead(200);
+	res.end(fs.readFileSync('index.html'));
 });
 
 io.on('connection', function(socket) {
-    console.log("a socket has connected");
-    socket.on('message', function(person, message) {
-        socket.broadcast.emit('message', person, message);
-    });
+	console.log("a socket has connected");
+	socket.on('message', function(person, message) {
+		socket.broadcast.emit('message', person, message);
+		console.log(person + ": " + message)
+	});
 });
