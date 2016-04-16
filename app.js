@@ -16,6 +16,7 @@ app.get("/", function(req, res) {
 	res.end(fs.readFileSync('index.html'));
 });
 
+// TODO: make sure that I integrate mongoDB into this
 io.on('connection', function(socket) {
 	console.log("a socket has connected");
 	socket.on('message', function(person, message) {
